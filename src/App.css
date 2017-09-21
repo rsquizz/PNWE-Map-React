@@ -1,0 +1,39 @@
+.App {
+  text-align: left;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #222;
+  height: 40px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+#seattlemap {
+    z-index: -1;
+    position: fixed;
+}
+
+circle {
+    position: sticky;
+    r: 35;
+    stroke: green;
+    stroke-width: 1;
+    fill: #b7a10e;
+    fill-opacity: 0.5;
+}
+
+#s1:hover {
+    fill: blue;
+}
+
+#audioPanel {
+    position: absolute;
+    left: 830px;
+    top: 65px;
+}
