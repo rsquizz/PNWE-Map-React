@@ -84,7 +84,7 @@ class App extends Component {
                 <div id="gender"><p>Gender: {gender}</p></div>
                 <div id="ethnicity"><p>Ethnicity: {ethnicity}</p></div>
             </div>
-            <Audio />
+            <Audio currentSpeaker= {this.state.currentSpeaker} />
             </div>
           </div>
         </div>
