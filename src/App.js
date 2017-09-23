@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import Audio from './Audio';
+
 //TODO: Match cirlces with speaker ID & age, populate demodata on hover, populate audiofiles on click
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      currentSpeaker: {},
       speakers: [{
         name: 'sL13CF1I',
         age: 92,
@@ -46,20 +49,17 @@ class App extends Component {
     };
 
     this.mouseOver = this.mouseOver.bind(this); 
-    this.handleClick = this.handleClick.bind(this);
   }
   
-  mouseOver (event) {
-    this.props = event.target.id;//Currently this is just putting every literal character into strings - need to actually populate with the demo info
-    };
-
-  handleClick(event) {
-    console.log("i'm handling it!");
+  mouseOver (e) {
+    const id = e.target.id;
+    const currentSpeaker = this.state.speakers.filter((speaker) => 
+    (speaker.name === id))[0];
+    this.setState({ currentSpeaker });
     };
   
-
   render() { //remember, rendering/validation happens here and not before
-    const { age, gender, ethnicity } = this.props;
+    const { age, gender, ethnicity } = this.state.currentSpeaker;
     return ( //output for the page
       <div className="App">
         <div className="App-header">
@@ -80,16 +80,14 @@ class App extends Component {
           <div id="audioPanel">
             <h2>Demographic data and audio will go here</h2>
             <div id="demoData">
-                <div id="age"><p>Age:{age}</p></div>
-                <div id="gender"><p>Gender:{gender}</p></div>
-                <div id="ethnicity"><p>Ethnicity:{ethnicity}</p></div>
+                <div id="age"><p>Age: {age}</p></div>
+                <div id="gender"><p>Gender: {gender}</p></div>
+                <div id="ethnicity"><p>Ethnicity: {ethnicity}</p></div>
             </div>
-            <div id="audioFiles">
-              <p>Audio>SOMETHING HERE/Audio></p>
+            <Audio />
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }

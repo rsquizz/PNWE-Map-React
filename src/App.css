@@ -28,7 +28,7 @@ circle {
     fill-opacity: 0.5;
 }
 
-#s1:hover {
+circle:hover {
     fill: blue;
 }
 
