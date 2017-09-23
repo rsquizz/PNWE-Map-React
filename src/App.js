@@ -8,7 +8,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentSpeaker: {},
+      currentSpeaker: null,
       speakers: [{
         name: 'sL13CF1I',
         age: 92,
@@ -48,19 +48,31 @@ class App extends Component {
       }]
     };
 
-    this.mouseOver = this.mouseOver.bind(this); 
+    this.mouseOver = this.mouseOver.bind(this);
   }
   
   mouseOver (e) {
     const id = e.target.id;
-    const currentSpeaker = this.state.speakers.filter((speaker) => 
+    const currentSpeaker = this.state.speakers.filter((speaker) =>
     (speaker.name === id))[0];
     this.setState({ currentSpeaker });
     };
   
   render() { //remember, rendering/validation happens here and not before
-    const { age, gender, ethnicity } = this.state.currentSpeaker;
-    return ( //output for the page
+   let audioPanel = <div />
+   if (this.state.currentSpeaker !== null) {
+      const { age, gender, ethnicity } = this.state.currentSpeaker;
+      audioPanel = <div id="audioPanel">
+        <h2>Demographic data and audio will go here</h2>
+            <div id="demoData">
+                <div id="age"><p>Age: {age}</p></div>
+                <div id="gender"><p>Gender: {gender}</p></div>
+                <div id="ethnicity"><p>Ethnicity: {ethnicity}</p></div>
+            </div>
+            <Audio currentSpeaker= {this.state.currentSpeaker} />
+            </div>
+   }
+   return ( //output for the page
       <div className="App">
         <div className="App-header">
           <h3>Listen to English in the Pacific Northwest</h3>
@@ -77,17 +89,9 @@ class App extends Component {
               <circle id="sU9CF3E" cx="422" cy="235" onClick={this.handleClick} onMouseOver={this.mouseOver}/>
             </svg>
           </div>
-          <div id="audioPanel">
-            <h2>Demographic data and audio will go here</h2>
-            <div id="demoData">
-                <div id="age"><p>Age: {age}</p></div>
-                <div id="gender"><p>Gender: {gender}</p></div>
-                <div id="ethnicity"><p>Ethnicity: {ethnicity}</p></div>
-            </div>
-            <Audio currentSpeaker= {this.state.currentSpeaker} />
-            </div>
-          </div>
         </div>
+        {audioPanel}
+      </div>
     );
   }
 }
