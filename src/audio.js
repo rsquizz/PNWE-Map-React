@@ -4,8 +4,9 @@ class Audio extends Component {
   
 render(props) {
     let audioURLs = [];
-    const audio = ["bull_bowl", "com_calm", "cot_caught", "don_dawn", "bacon", "eggs", "ham", "aid", "awed", "had", "head", "heed",
-        "hid", "hide", "hode", "hood", "howd", "hud", "odd", "whod"];
+    //removing the following audio files due tovery resolveable  url errors and css challenges: bacon
+    const audio = ["bull_bowl", "com_calm", "cot_caught", "don_dawn", "eggs", "ham", "aid", "awed", "had", "head", "heed",
+        "hid", "hide", "hode", "hood", "howd"];
     //Defining Speaker URLs 
     const speakerDigits = [
       {id: "sL13CF1I", digit: 1},
@@ -32,7 +33,7 @@ render(props) {
 return (
       <div className="App">
         <div className="App-header">
-          <h2>Click on each file to listen!</h2>
+          <h3>Click on the play button to listen!</h3>
         </div>
         <div className = "content">
         { audioURLs } 

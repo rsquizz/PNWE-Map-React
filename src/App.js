@@ -63,7 +63,9 @@ class App extends Component {
    if (this.state.currentSpeaker !== null) {
       const { age, gender, ethnicity } = this.state.currentSpeaker;
       audioPanel = <div id="audioPanel">
-        <h2>Demographic data and audio will go here</h2>
+        <div className="App-header">
+        <h3>About this speaker:</h3>
+        </div>
             <div id="demoData">
                 <div id="age"><p>Age: {age}</p></div>
                 <div id="gender"><p>Gender: {gender}</p></div>
@@ -71,6 +73,12 @@ class App extends Component {
             </div>
             <Audio currentSpeaker= {this.state.currentSpeaker} />
             </div>
+   } else {
+     audioPanel = <div id="audioPanel">
+     <div className="App-header">
+        <h2>Hover over a circle on the map to choose a speaker</h2>
+      </div>
+      </div>
    }
    return ( //output for the page
       <div className="App">
