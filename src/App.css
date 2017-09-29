@@ -4,7 +4,7 @@
 
 .App-header {
   text-align: center;
-  background-color: forestgreen;
+  background-color: #216b1d;
   height: 40px;
   padding: 20px;
   color: white;
@@ -41,4 +41,5 @@ circle:hover {
 .content {
     height: 400px;
     width: 710px;
+    overflow: auto;
 }

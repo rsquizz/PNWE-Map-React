@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 
-//removing the following audio files due to very resolveable  url errors and css challenges: bacon
-  const audio = ["bull_bowl", "com_calm", "cot_caught", "don_dawn", "bacon", "eggs", "ham", "aid", "awed", "had", "head", "heed",
-      "hid", "hide", "hode", "hood", "howd", "Hudd", "odd", "whod"];
-    
+//removing "bacon" due to url errors
+const audio = ["bull_bowl", "com_calm", "cot_caught", "don_dawn", "eggs", "ham", "aid", "awed", "had", "head", "heed",
+"hid", "hide", "hode", "hood", "howd"];
 
 class Audio extends Component {
-  
+
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.currentSpeaker !== this.props.currentSpeaker && prevProps.currentSpeaker !== null) {
+    if (prevProps.currentSpeaker !== this.props.currentSpeaker && prevProps.currentSpeaker !== null) {
       audio.forEach((name, index) => {
         this.refs['audio' + index].load()
       });
     }
   }
-
-render(props) {
+  
+  render(props) {
     let audioURLs = [];
     
     //Defining Speaker URLs 
@@ -36,15 +35,15 @@ render(props) {
     for (let i=0; i<audio.length; i++) {
           audioURLs.push(<div key={i}>
             {audio[i]}
-            <audio controls ref={audio[i] + '.mp3'}>
+            <audio controls ref={'audio' + i}>
               <source src={currentSpeakerURL + audio[i] + '.mp3'} />
             </audio>
           </div>);
         }
-return (
+  return (
       <div className="App">
         <div className="App-header">
-          <h3>Click on the play button to listen! (Some files unavailable)</h3>
+          <h3>Click on the play button to listen!</h3>
         </div>
         <div className = "content">
         { audioURLs } 

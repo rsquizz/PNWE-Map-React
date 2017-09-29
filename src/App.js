@@ -62,6 +62,7 @@ class App extends Component {
    let audioPanel = <div />
    if (this.state.currentSpeaker !== null) {
       const { age, gender, ethnicity } = this.state.currentSpeaker;
+      //Consider setting audio panel width to make it wider
       audioPanel = <div id="audioPanel">
         <div className="App-header">
         <h3>About this speaker:</h3>
