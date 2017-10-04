@@ -32,6 +32,7 @@ class Audio extends Component {
       return d.id ===currentSpeaker;
     })[0].digit;
     let currentSpeakerURL = "http://depts.washington.edu/sociolab/sources/speaker-files/Spk" + speakerDigit + "/";
+    //TODO: Align the play buttons on the audio controls (by creating a container for the text rendered by {audio[i]})
     for (let i=0; i<audio.length; i++) {
           audioURLs.push(<div key={i}>
             {audio[i]}
